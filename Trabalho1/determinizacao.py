@@ -81,6 +81,7 @@ def determine_afd(input_string):
     formatted_transitions = []
     for state, symbol, next_state in dfa_transitions:
         formatted_transitions.append(f'{{{"".join(sorted(state))}}},{symbol},{"{" + "".join(sorted(next_state)) + "}"}')
+    formatted_transitions = sorted(formatted_transitions, key=lambda x: (x.split(',')[0].replace("{", "").replace("}", ""), x.split(',')[1].replace("{", "").replace("}", "")))
 
     # ALFABETO
     if '&' in alphabet:
